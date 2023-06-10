@@ -1,0 +1,33 @@
+< !DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>D&D Character Manager</title><link rel="stylesheet" href="shared/common-styles.css"><style>.dice-roll-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.roll-dice-container {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.roll-dice-container select {
+    margin-right: 10px;
+}
+
+.roll-button {
+    margin-top: 10px;
+}
+
+.output-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+

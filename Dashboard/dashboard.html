@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../shared/common-styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <h1>Welcome to the Dashboard</h1>
+        <div class="character-sheet">
+            <h2>Create a New Character</h2>
+        <h2>Character Name</h2>
+        <ul>
+            <li>Race: </li>
+            <li>Class: </li>
+            <li>Level: </li>
+            <!-- Add more character details as needed -->
+        </ul>
+        </div>
+
+        <div class="roll-dice-container">
+            <div>
+                <span>Roll Dice: </span>
+                <select id="diceType">
+                    <option value="D4">D4</option>
+                    <option value="D6">D6</option>
+                    <option value="D8">D8</option>
+                    <option value="D10">D10</option>
+                    <option value="D12">D12</option>
+                    <option value="D20">D20</option>
+                    <option value="D100">D100</option>
+                </select>
+                <input type="number" id="diceAmount" placeholder="Amount">
+            </div>
+            <button class="roll-button" onclick="rollDice()">Roll</button>
+        </div>
+
+        <div class="output-container" id="diceOutput"></div>
+    </div>
+
+    <div class="heading-bar">
+        <div>
+            <a href="../account-page/account-page.html">Account Page</a>
+            <a href="../saved-characters/saved-characters.html">Saved Character Pages</a>
+            <a href="../character-notes/character-notes.html">Character Notes Pages</a>
+        </div>
+        <div class="saved-characters">
+            <!-- Display and link to saved character pages -->
+            <a href="#">Character 1</a>
+            <a href="#">Character 2</a>
+            <a href="#">Character 3</a>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

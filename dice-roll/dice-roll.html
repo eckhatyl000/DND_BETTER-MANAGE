@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roll</title>
+    <link rel="stylesheet" href="../shared/common-styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="dice-roll-container">
+        <h1>Dice Roll</h1>
+        <div class="roll-dice-container">
+            <div>
+                <span>Roll Dice: </span>
+                <select id="diceType">
+                    <option value="D4">D4</option>
+                    <option value="D6">D6</option>
+                    <option value="D8">D8</option>
+                    <option value="D10">D10</option>
+                    <option value="D12">D12</option>
+                    <option value="D20">D20</option>
+                    <option value="D100">D100</option>
+                    
+                </select>
+                <input type="number" id="diceAmount" placeholder="Amount">
+            </div>
+            <button class="roll-button" onclick="rollDice()">Roll</button>
+        </div>
+
+        <div class="output-container" id="diceOutput"></div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
