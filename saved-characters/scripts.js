@@ -10,6 +10,9 @@ window.addEventListener('DOMContentLoaded', function () {
         { id: 3, name: 'Character 3' }
     ];
 
+    // Clear the existing character list
+    characterList.innerHTML = '';
+
     // Generate saved character list dynamically
     savedCharacters.forEach(character => {
         const listItem = document.createElement('li');
@@ -20,3 +23,4 @@ window.addEventListener('DOMContentLoaded', function () {
         characterList.appendChild(listItem);
     });
 });
+
