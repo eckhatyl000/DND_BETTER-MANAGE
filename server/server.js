@@ -1,43 +1,7 @@
 const fs = require('fs');
-const AWS = require('aws-sdk');
 const express = require('express');
 const app = express();
 const port = 3000;
-
-
-
-
-// Set AWS credentials and region
-AWS.config.update({
-    accessKeyId: 'AKIAZEW7NY656DHQ4NQP',
-    secretAccessKey: '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',
-    region: 'us-west-2',
-});
-
-
-const s3 = new AWS.S3();
-
-s3.listObjectsV2({ Bucket: 'tylerawsbucket' }, (err, data) => {
-    if (err) {
-        console.error('Error:', err);
-    } else {
-        console.log('Objects in the bucket:', data.Contents);
-    }
-});
-
-
-const params = {
-    Bucket: 'tylerawsbucket',
-    Key: 's3://tylerawsbucket/us-west-2-bundle.pem',
-};
-
-s3.getObject(params, (err, data) => {
-    if (err) {
-        console.error('Error downloading file:', err);
-    } else {
-        // File downloaded successfully, you can access the file data in `data.Body`
-    }
-});
 
 
 // Middleware for parsing JSON request bodies
