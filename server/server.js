@@ -16,6 +16,8 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 const authRoutes = require('./routes/authRoutes');
 const otherRoutes = require('./routes/otherRoutes');
 const createAccountRoutes = require('./routes/createAccountRoutes');
+const path = require('path');
+
 
 app.use('/login', loginRoutes);
 app.use('/dashboard', dashboardRoutes);
@@ -66,7 +68,7 @@ app.delete('/api/characters/:id', (req, res) => {
 
 // Serve the landing page
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/../Login/login.html');
+    res.sendFile(path.resolve(__dirname, '..', 'Login', 'login.html'));
 });
 
 
