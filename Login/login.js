@@ -1,4 +1,4 @@
-document.getElementById('loginForm').addEventListener('Login', function (event) {
+document.getElementById('loginForm').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent form submission
 
     // Get the form input values
@@ -12,7 +12,7 @@ document.getElementById('loginForm').addEventListener('Login', function (event) 
     };
 
     // Make a POST request to the server to handle the login
-    fetch('/Login', {
+    fetch('/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
