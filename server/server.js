@@ -7,7 +7,7 @@ const port = 3000;
 // Middleware for parsing JSON request bodies
 app.use(express.json());
 
-app.use(express.static('DND_BETTER-MANAGE'));
+app.use(express.static('Public'));
 
 // Routes
 const loginRoutes = require('../routes/loginRoutes');
