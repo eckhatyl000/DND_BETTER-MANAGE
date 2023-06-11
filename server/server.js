@@ -5,6 +5,9 @@ const port = 3000;
 // Middleware for parsing JSON request bodies
 app.use(express.json());
 
+// Serve static files from the "public" directory
+app.use(express.static('DND_BETTER-MANAGE'));
+
 // Routes
 const loginRoutes = require('./routes/loginRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
@@ -57,6 +60,11 @@ app.delete('/api/characters/:id', (req, res) => {
     // ...
     // Send a response indicating success or failure
     res.json({ message: 'Character deleted successfully' });
+});
+
+// Serve the landing page
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/DND_BETTER-MANAGE/landing.html');
 });
 
 // Start the server
