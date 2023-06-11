@@ -7,15 +7,14 @@ const port = 3000;
 // Middleware for parsing JSON request bodies
 app.use(express.json());
 
-// Serve static files from the "public" directory
 app.use(express.static('DND_BETTER-MANAGE'));
 
 // Routes
-const loginRoutes = require('./routes/loginRoutes');
-const dashboardRoutes = require('./routes/dashboardRoutes');
-const authRoutes = require('./routes/authRoutes');
-const otherRoutes = require('./routes/otherRoutes');
-const createAccountRoutes = require('./routes/createAccountRoutes');
+const loginRoutes = require('../routes/loginRoutes');
+const dashboardRoutes = require('../routes/dashboardRoutes');
+const authRoutes = require('../routes/authRoutes');
+const otherRoutes = require('../routes/otherRoutes');
+const createAccountRoutes = require('../routes/createAccountRoutes');
 const path = require('path');
 
 
