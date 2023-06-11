@@ -66,7 +66,7 @@ app.delete('/api/characters/:id', (req, res) => {
 
 // Serve the landing page
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/../DND_BETTER-MANAGE/Login/login.html');
+    res.sendFile(__dirname + '/Login/login.html', { root: __dirname + '/../DND_BETTER-MANAGE' });
 });
 
 
