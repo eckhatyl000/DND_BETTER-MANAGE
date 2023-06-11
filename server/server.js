@@ -95,7 +95,7 @@ async function connectToDatabase() {
         console.log('Connected to the database');
 
         // Perform database operations
-        const db = client.db('tylerdb'); // Replace with your database name
+        const db = client.db('tylerdb'); 
         // ...
 
         // Close the client connection
