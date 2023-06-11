@@ -67,31 +67,31 @@ app.listen(port, () => {
 const { MongoClient } = require('mongodb');
 
 // Connection URL
-const url = 'mongodb://localhost:27017'; // Update with your MongoDB connection URL
+const url = 'mongodb://Eckhatyl000:<TeeGee%231>@tylerdb.cknlngax0gto.us-west-2.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=us-west-2-bundle.pem&retryWrites=false';
+const ca = fs.readFileSync('C:\\Users\\Ty-Ty\\Downloads\\us-west-2-bundle.pem');
 
-// Create a new MongoClient
-const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    ssl: true,
+    sslValidate: true,
+    sslCA: ca,
+};
 
-// Connect to the MongoDB cluster
+
+// Connect to the Amazon DocumentDB cluster
 async function connectToDatabase() {
     try {
+        const client = new MongoClient(url, options);
         await client.connect();
         console.log('Connected to the database');
 
-        // Connection successful, perform database operations
-        const db = client.db('your-database-name'); // Update with your database name
+        // Perform database operations
+        const db = client.db('tylerdb'); // Replace with your database name
+        // ...
 
-        // Example: Insert a document into a collection
-        const collection = db.collection('your-collection-name'); // Update with your collection name
-        collection.insertOne({ name: 'John Doe', age: 30 }, (err, result) => {
-            if (err) {
-                console.error('Error inserting document:', err);
-                return;
-            }
-
-            console.log('Document inserted:', result.insertedCount);
-            client.close();
-        });
+        // Close the client connection
+        client.close();
     } catch (err) {
         console.error('Error connecting to the database:', err);
     }
@@ -99,4 +99,6 @@ async function connectToDatabase() {
 
 // Call the connectToDatabase function to establish the connection
 connectToDatabase();
+
+
 
