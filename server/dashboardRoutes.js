@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Character = require('../models/characters');
+const Character = require('./models/characters');
 
 // GET /dashboard
 router.get('/', async (req, res) => {
