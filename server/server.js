@@ -8,7 +8,7 @@ const port = 3000;
 app.use(express.json());
 
 // Serve static files from the "public" directory
-app.use(express.static('DND_BETTER-MANAGE'));
+app.use(express.static('DND_BETTER MANAGE'));
 
 // Routes
 const loginRoutes = require('./routes/loginRoutes');
@@ -66,7 +66,7 @@ app.delete('/api/characters/:id', (req, res) => {
 
 // Serve the landing page
 app.get('/', (req, res) => {
-    res.sendFile('landing.html', { root: __dirname + '/../DND_BETTER-MANAGE' });
+    res.sendFile('landing.html', { root: __dirname + '/../DND_BETTER MANAGE' });
 });
 
 
