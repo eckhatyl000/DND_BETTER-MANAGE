@@ -1,7 +1,15 @@
 const fs = require('fs');
+const AWS = require('aws-sdk');
 const express = require('express');
 const app = express();
 const port = 3000;
+
+// Set AWS credentials and region
+AWS.config.update({
+    accessKeyId: 'AKIAZEW7NY656DHQ4NQP',
+    secretAccessKey: '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',
+    region: 'us-west-2',
+});
 
 // Middleware for parsing JSON request bodies
 app.use(express.json());
