@@ -70,6 +70,10 @@ app.get('/', (req, res) => {
 });
 
 
+// after all your other route definitions
+app.get('*', function (req, res) {
+    res.redirect('/');
+});
 
 
 // Start the server
