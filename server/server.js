@@ -67,7 +67,7 @@ app.listen(port, () => {
 const { MongoClient } = require('mongodb');
 
 // Connection URL
-const url = 'mongodb://Eckhatyl000:<TeeGee%231>@tylerdb.cknlngax0gto.us-west-2.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=us-west-2-bundle.pem&retryWrites=false';
+const url = 'mongodb://Eckhatyl000:TeeGee%231@tylerdb.cknlngax0gto.us-west-2.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=us-west-2-bundle.pem&retryWrites=false';
 const ca = fs.readFileSync('C:\\Users\\Ty-Ty\\Downloads\\us-west-2-bundle.pem');
 
 const options = {
