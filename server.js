@@ -86,15 +86,15 @@ app.listen(port, () => {
 const { MongoClient } = require('mongodb');
 
 // Connection URL
-const url = 'mongodb://Eckhatyl000:TeeGee%231@tylerdb.cknlngax0gto.us-west-2.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=us-west-2-bundle.pem&retryWrites=false';
+const url = 'mongodb://Eckhatyl000:TeeGee%231@tylerdb.cknlngax0gto.us-west-2.docdb.amazonaws.com:27017/?retryWrites=false';
 const ca = fs.readFileSync('/home/ec2-user/files/us-west-2-bundle.pem');
 
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    ssl: true,
-    sslValidate: true,
-    sslCA: ca,
+    tls: true,
+    tlsInsecure: false,
+    tlsCAFile: ca,
 };
 
 
