@@ -32,6 +32,6 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
 // Handle create account link click
 document.getElementById('createAccountLink').addEventListener('click', function (event) {
     event.preventDefault();
-    window.location.href = 'create-account/create-account.html';
+    window.location.href = '/create-account/create-account.html';
 });
 
