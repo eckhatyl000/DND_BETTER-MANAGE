@@ -147,21 +147,25 @@ async function connectToDatabase() {
             console.log('Collection "characters" already exists');
         }
 
-    // Additional database operations..
-
-        // Insert a document into the 'users' collection
-        const result = await db.collection('users').insertOne({
-            username: 'testuser',
-            password: 'testpassword'
-        });
-
-        console.log('Inserted document with _id: ' + result.insertedId);
-
-    } catch (err) {
-        console.error('Error connecting to the database:', err);
+        // Check if the 'users' collection has any documents
+        const usersCollection = db.collection('users');
+        const existingUser = await usersCollection.findOne({});
+        if (existingUser) {
+            console.log('Document already exists in the "users" collection');
+        } else {
+            // Insert a document into the 'users' collection
+            const result = await usersCollection.insertOne({
+                username: 'testuser',
+                password: 'testpassword'
+            });
+            console.log('Inserted document with _id: ' + result.insertedId);
+        }
+    }
+    // Additional database operations...
+catch (err) {
+    console.error('Error connecting to the database:', err);
     }
 }
-
 // Call the connectToDatabase function to establish the connection
 connectToDatabase().then(() => {
     db.collection('mycollection').find({});
