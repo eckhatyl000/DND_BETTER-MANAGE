@@ -18,16 +18,14 @@ exports.dashboard = async (req, res) => {
         // Retrieve character details for the user from the database
         const characters = await Character.find({ userId });
 
-        //Serve the static file
-        res.sendFile(path.join(__dirname, 'Public', 'Dashboard', 'dashboard.html'));
-    
-        // Render the dashboard view with the retrieved data
-        res.render('dashboard', { user, characters });
+        // Serve the static file
+        res.sendFile(path.join(__dirname, '..', 'Public', 'Dashboard', 'dashboard.html'));
     } catch (error) {
-        // Handle any errors that occur during data retrieval or rendering
+        // Handle any errors that occur during data retrieval or file serving
         console.error(error);
         res.status(500).send('Internal Server Error');
     }
 };
+
 
 
