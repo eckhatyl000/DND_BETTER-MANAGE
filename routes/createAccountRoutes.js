@@ -26,12 +26,12 @@ router.post('/', async (req, res) => {
         const newUser = new User({ username, password: hashedPassword });
         await newUser.save();
 
-        res.json({ message: 'You done diddly created your account congrats' });
+        res.redirect('/dashboard');
     } catch (error) {
         console.error('Error creating account:', error);
         res.status(500).json({ message: 'Error creating account' });
-    }
-});
+    
+}});
 
 
 async function isValidCredentials(username, password) {
