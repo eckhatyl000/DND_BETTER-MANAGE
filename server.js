@@ -168,7 +168,7 @@ async function connectToDatabase() {
             console.log('Document already exists in the "characters" collection');
         } else {
             // Insert a document into the 'users' collection
-            const result = await usersCollection.insertOne({
+            const result = await charactersCollection.insertOne({
                 username: 'testCharacter',
                 
             });
