@@ -1,12 +1,20 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const port = 3000;
 
 
 // Middleware for parsing JSON request bodies
 app.use(express.json());
+
+app.use(session({
+    secret: 'your_secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // set to true if your using https
+}));
 
 app.use(express.static(path.join(__dirname, 'Public')));
 
