@@ -160,8 +160,23 @@ async function connectToDatabase() {
             });
             console.log('Inserted document with _id: ' + result.insertedId);
         }
+
+        // Check if the 'characters' collection has any documents
+        const charactersCollection = db.collection('characters');
+        const existingCharacter = await charactersCollection.findOne({});
+        if (existingUser) {
+            console.log('Document already exists in the "characters" collection');
+        } else {
+            // Insert a document into the 'users' collection
+            const result = await usersCollection.insertOne({
+                username: 'testCharacter',
+                
+            });
+            console.log('Inserted document with _id: ' + result.insertedId);
+        }
+
     }
-    // Additional database operations...
+    
 catch (err) {
     console.error('Error connecting to the database:', err);
     }
