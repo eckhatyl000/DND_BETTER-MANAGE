@@ -8,7 +8,13 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     // TODO: Check the provided username and password here
-    res.redirect('/dashboard');
+    const { username, password } = req.body;
+    
+    if (username === 'admin' && password === 'password') {
+        res.redirect('/dashboard');
+    } else {
+        res.redirect('/login'); // Redirect back to the login page if credentials are invalid
+    }
 });
 
 module.exports = router;
