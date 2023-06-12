@@ -80,7 +80,7 @@ app.get('/', (req, res) => {
 });
 
 
-// after all your other route definitions
+
 app.get('*', function (req, res) {
     res.redirect('/');
 });
@@ -105,6 +105,9 @@ const options = {
     tlsCAFile: '/home/ec2-user/us-west-2-bundle.pem',
 };
 
+let client;
+let db;
+
 
 // Connect to the Amazon DocumentDB cluster
 async function connectToDatabase() {
@@ -115,7 +118,14 @@ async function connectToDatabase() {
 
         // Perform database operations
         const db = client.db('tylerdb'); 
-        // ...
+        
+        // Insert a document into the 'users' collection
+        const result = await db.collection('users').insertOne({
+            username: 'testuser',
+            password: 'testpassword'
+        });
+
+        console.log('Inserted document with _id: ' + result.insertedId);
 
     } catch (err) {
         console.error('Error connecting to the database:', err);
@@ -123,7 +133,8 @@ async function connectToDatabase() {
 }
 
 // Call the connectToDatabase function to establish the connection
-connectToDatabase();
-
+connectToDatabase().then(() => {
+    db.collection('mycollection').find({});
+});
 
 
