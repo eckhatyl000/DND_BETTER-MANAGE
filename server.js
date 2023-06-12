@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -10,12 +11,12 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'Public')));
 
 // Routes
-const loginRoutes = require('../routes/loginRoutes');
-const dashboardRoutes = require('../routes/dashboardRoutes');
-const authRoutes = require('../routes/authRoutes');
-const otherRoutes = require('../routes/otherRoutes');
-const createAccountRoutes = require('../routes/createAccountRoutes');
-const path = require('path');
+const loginRoutes = require('./routes/loginRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
+const authRoutes = require('./routes/authRoutes');
+const otherRoutes = require('./routes/otherRoutes');
+const createAccountRoutes = require('./routes/createAccountRoutes');
+
 
 
 app.use('/login', loginRoutes);
