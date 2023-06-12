@@ -129,7 +129,7 @@ async function connectToDatabase() {
         const db = client.db('tylerdb'); 
 
         // Create a new collection
-        db.createCollection('<collection-name>', (err, result) => {
+        db.createCollection('users', (err, result) => {
             if (err) {
                 console.error('Error creating collection:', err);
                 return;
