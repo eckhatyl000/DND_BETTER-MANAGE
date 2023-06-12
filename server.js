@@ -94,7 +94,7 @@ const options = {
     useUnifiedTopology: true,
     tls: true,
     tlsInsecure: false,
-    tlsCAFile: ca,
+    tlsCAFile: '/home/ec2-user/us-west-2-bundle.pem',
 };
 
 
