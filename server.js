@@ -117,8 +117,6 @@ async function connectToDatabase() {
         const db = client.db('tylerdb'); 
         // ...
 
-        // Close the client connection
-        client.close();
     } catch (err) {
         console.error('Error connecting to the database:', err);
     }
