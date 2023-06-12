@@ -128,14 +128,26 @@ async function connectToDatabase() {
         // Perform database operations
         const db = client.db('tylerdb'); 
 
-        // Create a new collection
-        db.createCollection('users', (err, result) => {
-            if (err) {
-                console.error('Error creating collection:', err);
-                return;
-            }
+        // Check if the collections exist
+        const collections = await db.listCollections().toArray();
 
-            console.log('Collection created:', result.collectionName)});
+        // Create the 'users' collection if it doesn't exist
+        if (!collections.some(coll => coll.name === 'users')) {
+            await db.createCollection('users');
+            console.log('Collection "users" created');
+        } else {
+            console.log('Collection "users" already exists');
+        }
+
+        // Create the 'characters' collection if it doesn't exist
+        if (!collections.some(coll => coll.name === 'characters')) {
+            await db.createCollection('characters');
+            console.log('Collection "characters" created');
+        } else {
+            console.log('Collection "characters" already exists');
+        }
+
+    // Additional database operations..
 
         // Insert a document into the 'users' collection
         const result = await db.collection('users').insertOne({
