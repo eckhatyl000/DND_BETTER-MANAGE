@@ -37,9 +37,18 @@ app.use('/create-account', createAccountRoutes);
 app.post('/api/characters', (req, res) => {
     // Logic to create a new character
     const newCharacter = req.body;
+
     // Save the new character to the database
-    // ...
-    // Send a response indicating success or failure
+    db.collection('characters').insertOne(newCharacter)
+        .then(result => {
+            // Send a response indicating success
+            res.json({ message: 'Character created successfully', characterId: result.insertedId });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Send a response indicating failure
+            res.status(500).json({ message: 'An error occurred while creating the character.' });
+        });
     res.json({ message: 'Character created successfully' });
 });
 
@@ -118,7 +127,16 @@ async function connectToDatabase() {
 
         // Perform database operations
         const db = client.db('tylerdb'); 
-        
+
+        // Create a new collection
+        db.createCollection('<collection-name>', (err, result) => {
+            if (err) {
+                console.error('Error creating collection:', err);
+                return;
+            }
+
+            console.log('Collection created:', result.collectionName)});
+
         // Insert a document into the 'users' collection
         const result = await db.collection('users').insertOne({
             username: 'testuser',
