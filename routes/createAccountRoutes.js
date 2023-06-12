@@ -8,18 +8,19 @@ router.post('/', async (req, res) => {
     try {
         const { username, password } = req.body;
 
-        
-        const isValid = await isValidCredentials(username, password);
-        if (!isValid) {
-            return res.status(401).json({ message: 'You done messed up A A RON that was invalid' });
+        // Check if username is already in use
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
+            return res.status(409).json({ message: 'Username is already taken' });
         }
 
-        
+        // Hash the password
         const hashedPassword = await hashPassword(password);
 
-        
+        // Create the new user
+        const newUser = new User({ username, password: hashedPassword });
+        await newUser.save();
 
-        
         res.json({ message: 'You done diddly created your account congrats' });
     } catch (error) {
         console.error('Error creating account:', error);
