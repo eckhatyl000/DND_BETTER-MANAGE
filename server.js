@@ -68,7 +68,7 @@ app.delete('/api/characters/:id', (req, res) => {
 
 // Serve the landing page
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'Login', 'login.html'));
+    res.sendFile(path.resolve(__dirname, 'Public', 'Login', 'login.html'));
 });
 
 
