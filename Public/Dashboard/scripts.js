@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 function rollDice() {
     const diceType = document.getElementById('diceType').value;
     const diceAmount = document.getElementById('diceAmount').value;
@@ -48,3 +49,4 @@ function displayError(message) {
     const errorContainer = document.getElementById('errorContainer');
     errorContainer.textContent = message;
 }
+});

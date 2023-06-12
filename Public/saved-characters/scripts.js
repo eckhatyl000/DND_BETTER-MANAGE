@@ -1,5 +1,3 @@
-// Example code for dynamically generating the saved character list
-// Replace this code with your actual logic for fetching and displaying saved characters
 window.addEventListener('DOMContentLoaded', function () {
     const characterList = document.querySelector('.character-list ul');
 
