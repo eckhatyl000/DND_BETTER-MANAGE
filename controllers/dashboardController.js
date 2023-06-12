@@ -1,3 +1,4 @@
+const path = require('path');
 const User = require('../models/user');
 const Character = require('../models/characters');
 
@@ -17,6 +18,9 @@ exports.dashboard = async (req, res) => {
         // Retrieve character details for the user from the database
         const characters = await Character.find({ userId });
 
+        //Serve the static file
+        res.sendFile(path.join(__dirname, 'Public', 'Dashboard', 'dashboard.html'));
+    
         // Render the dashboard view with the retrieved data
         res.render('dashboard', { user, characters });
     } catch (error) {
