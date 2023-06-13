@@ -1,9 +1,10 @@
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 
 // Middleware for parsing JSON request bodies
@@ -13,7 +14,7 @@ app.use(session({
     secret: 'your_secret',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // set to true if your using https
+    cookie: { secure: true } // set to true if your using https
 }));
 
 app.use(express.static(path.join(__dirname, 'Public')));
@@ -103,8 +104,8 @@ app.listen(port, () => {
 const { MongoClient } = require('mongodb');
 
 // Connection URL
-const url = 'mongodb://Eckhatyl000:TeeGee%231@tylerdb.cknlngax0gto.us-west-2.docdb.amazonaws.com:27017/?retryWrites=false';
-const ca = fs.readFileSync('/home/ec2-user/us-west-2-bundle.pem');
+const url = process.env.DB_URL;
+const secretKey = process.env.SECRET_KEY;
 
 const options = {
     useNewUrlParser: true,
