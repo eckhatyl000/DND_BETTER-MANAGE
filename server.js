@@ -121,12 +121,12 @@ let db;
 // Connect to the Amazon DocumentDB cluster
 async function connectToDatabase() {
     try {
-        const client = new MongoClient(url, options);
+        client = new MongoClient(url, options);
         await client.connect();
         console.log('Connected to the database');
 
         // Perform database operations
-        const db = client.db('tylerdb'); 
+        db = client.db('tylerdb'); 
 
         // Check if the collections exist
         const collections = await db.listCollections().toArray();
