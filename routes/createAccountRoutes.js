@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
         // Check if username is already in use
         const existingUser = await User.findOne({ username });
         if (existingUser) {
-            return res.status(409).json({ message: 'Username is already taken' });
+            return res.status(409).json({ success: false, message: 'Username is already taken' });
         }
 
         // Hash the password
@@ -26,10 +26,12 @@ router.post('/', async (req, res) => {
         const newUser = new User({ username, password: hashedPassword });
         await newUser.save();
 
+
+        res.status(201).json({ success: true, message: 'Account created successfully' });
         res.redirect('/dashboard');
     } catch (error) {
         console.error('Error creating account:', error);
-        res.status(500).json({ message: 'Error creating account' });
+        res.status(500).json({ success: false, message: 'Error creating account' });
     
 }});
 

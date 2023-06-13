@@ -22,7 +22,15 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
         .then(response => response.json())
         .then(data => {
             console.log(data.message);
-            window.location.href = '../Dashboard/dashboard.html';
+            if (data.success) {
+                window.location.href = '/dashboard';
+            } else {
+
+                // Handle failed login
+                console.log('Login failed:', data.message);
+                // Display an error message to the user or perform other actions
+            }
+            
         })
         .catch(error => {
             console.error('Error:', error);

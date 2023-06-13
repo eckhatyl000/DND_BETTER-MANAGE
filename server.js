@@ -85,13 +85,13 @@ app.delete('/api/characters/:id', (req, res) => {
 
 // Serve the landing page
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'Public', 'Login', 'login.html'));
+    res.sendFile(path.join(__dirname, 'Public', 'Login', 'login.html'));
 });
 
 
 
 app.get('*', function (req, res) {
-    res.redirect('/');
+    res.sendFile(path.join(__dirname, 'Public', 'Login', 'login.html'));
 });
 
 
@@ -164,7 +164,7 @@ async function connectToDatabase() {
         // Check if the 'characters' collection has any documents
         const charactersCollection = db.collection('characters');
         const existingCharacter = await charactersCollection.findOne({});
-        if (existingUser) {
+        if (existingCharacter) {
             console.log('Document already exists in the "characters" collection');
         } else {
             // Insert a document into the 'users' collection
@@ -179,11 +179,12 @@ async function connectToDatabase() {
     
 catch (err) {
     console.error('Error connecting to the database:', err);
+    process.exit(1);
     }
 }
 // Call the connectToDatabase function to establish the connection
 connectToDatabase().then(() => {
-    db.collection('mycollection').find({});
+    
 });
 
 

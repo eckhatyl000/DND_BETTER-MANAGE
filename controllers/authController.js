@@ -9,7 +9,7 @@ const registerUser = async (req, res) => {
         
         const existingUser = await User.findOne({ username });
         if (existingUser) {
-            return res.status(400).json({ error: 'Username already exists' });
+            return res.status(400).json({ success: false, error: 'Username already exists' });
         }
 
         // Hash the password
@@ -18,9 +18,9 @@ const registerUser = async (req, res) => {
         // Create a new user
         const user = await User.create({ username, password: hashedPassword });
 
-        res.status(201).json(user);
+        res.status(201).json({ success: true, user});
     } catch (error) {
-        res.status(500).json({ error: 'Failed to register user' });
+        res.status(500).json({ success: false, error: 'Failed to register user' });
     }
 };
 
@@ -32,21 +32,21 @@ const loginUser = async (req, res) => {
         // Find the user by username
         const user = await User.findOne({ username });
         if (!user) {
-            return res.status(404).json({ error: 'User not found' });
+            return res.status(404).json({ success: false, error: 'User not found' });
         }
 
         // Compare passwords
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(401).json({ error: 'Incorrect password' });
+            return res.status(401).json({ success: false, error: 'Incorrect password' });
         }
 
         // Return user data or generate JWT token
         // Here, you can use a JWT library like jsonwebtoken to generate and send a token
 
-        res.json(user);
+        res.json({ success: true, user});
     } catch (error) {
-        res.status(500).json({ error: 'Failed to login' });
+        res.status(500).json({ success: false, error: 'Failed to login' });
     }
 };
 

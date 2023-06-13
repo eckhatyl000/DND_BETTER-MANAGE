@@ -7,9 +7,9 @@ exports.login = (req, res) => {
         // Generate and return a token or session information
         const token = 'your-authentication-token';
 
-        res.json({ message: 'Login successful', token });
+        res.json({ success: true, message: 'Login successful', token });
     } else {
         // Authentication failed
-        res.status(401).json({ message: 'Invalid username or password' });
+        res.status(401).json({ success: false, message: 'Invalid username or password' });
     }
 };

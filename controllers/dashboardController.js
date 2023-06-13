@@ -12,7 +12,7 @@ exports.dashboard = async (req, res) => {
 
         // If the user does not exist, return an error response
         if (!user) {
-            return res.status(404).send('User not found');
+            return res.status(404).json({ error: 'User not found'});
         }
 
         // Retrieve character details for the user from the database
@@ -23,7 +23,7 @@ exports.dashboard = async (req, res) => {
     } catch (error) {
         // Handle any errors that occur during data retrieval or file serving
         console.error(error);
-        res.status(500).send('Internal Server Error');
+        res.status(500).json({ error: 'Internal Server Error'});
     }
 };
 

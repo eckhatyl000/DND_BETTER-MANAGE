@@ -25,7 +25,7 @@ document.getElementById('createAccountForm').addEventListener('submit', function
         .then(response => response.json())
         .then(data => {
             console.log(data.message);
-            window.location.href = 'Dashboard/dashboard.html';
+            window.location.href = '../Dashboard/dashboard.html';
         })
         .catch(error => {
             console.error('Error:', error);

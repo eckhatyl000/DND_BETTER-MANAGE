@@ -11,10 +11,14 @@ router.post('/', (req, res) => {
     const { username, password } = req.body;
 
     if (username === 'admin' && password === 'password') {
-        res.redirect('/dashboard');
+
+        const token = 'your-authentication-token';
+        res.json({sucess: true, message: 'Login successful', token});
     } else {
-        res.redirect('/login'); // Redirect back to the login page if credentials are invalid
+        res.status(401).json({ sucess: false, message: 'Invalid username or password'}); // Redirect back to the login page if credentials are invalid
     }
+
+    res.redirect('/dashboard')
 });
 
 module.exports = router;
