@@ -16,7 +16,7 @@ exports.dashboard = async (req, res) => {
         }
 
         // Retrieve character details for the user from the database
-        const characters = await Character.find({ userId });
+        const characters = await Character.find();
 
         // Serve the static file
         res.sendFile(path.join(__dirname, '..', 'Public', 'Dashboard', 'dashboard.html'));
